@@ -19,4 +19,5 @@ connection.query("use"+ process.env.MYSQL_DATABASE, function(error, rows) {
     }
 });
 
+console.log("hi");
 module.exports=connection;
