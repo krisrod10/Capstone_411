@@ -4,14 +4,10 @@ create table User411 (
     lastname VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
     phone VARCHAR(100) NOT NULL,
-    featured_image_id INT,
-    PRIMARY KEY (id)
+  PRIMARY KEY (id)
 ) ENGINE=Innodb;
 
-create table images (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    image_path VARCHAR(1000)
-)
+
 
 create table usersLogin (
     id INT NOT NULL AUTO_INCREMENT,
@@ -27,6 +23,5 @@ create table Contact411 (
     lastname VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
     phone VARCHAR(100) NOT NULL,
-    featured_image_id INT,
     PRIMARY KEY (id)
 ) ENGINE=Innodb;
