@@ -11,7 +11,7 @@ let connection = mysql.createConnection({
 
 connection.connect();
 
-connection.query("use"+ process.env.MYSQL_DATABASE, function(error, rows) {
+connection.query("use "+ process.env.MYSQL_DATABASE, function(error, rows) {
     if(error){
         console.log("DB QUERY ERROR", error);
     } else {
@@ -19,5 +19,5 @@ connection.query("use"+ process.env.MYSQL_DATABASE, function(error, rows) {
     }
 });
 
-console.log("hi");
+
 module.exports=connection;
