@@ -1,30 +1,22 @@
 let mysql = require('mysql');
 require('dotenv').config();
 
-class Connection {
-    constructor() {
-        if (!this.pool) {
-            this.pool = mysql.createPool(process.env.BASE_URL);
-            return this.pool;
-        }
-        return this.pool;
+let connection = mysql.createConnection({
+    host: process.env.MYSQL_HOST,
+    user: process.env.MYSQL_USERNAME,
+    password:process.env.MYSQL_PASSWORD,
+    database:process.env.MYSQL_DATABASE,
+    port:process.env.MYSQL_PORT
+});
+
+connection.connect();
+
+connection.query("use"+ process.env.MYSQL_DATABASE, function(error, rows) {
+    if(error){
+        console.log("DB QUERY ERROR", error);
+    } else {
+        console.log("QUERY RESULTS", rows);
     }
-}
+});
 
-const instance = new Connection();
-
-instance.queryWrapper = (query, params) => {
-    return new Promise((resolve, reject) => {
-        instance.query(query, params, (error, results) => {
-            if (error) {
-                console.log(`Database query failed`, error);
-                return reject(error);
-            } else {
-                console.log('Successfully processed database query');
-                resolve(results);
-            }
-        })
-    })
-}
-
-module.exports = instance;
+module.exports=connection;
